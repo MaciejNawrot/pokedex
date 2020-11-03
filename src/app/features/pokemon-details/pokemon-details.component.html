@@ -1,0 +1,13 @@
+<div class="details-container">
+  <div class="pokemon-details" *ngIf="(pokemon$ | async) as pokemon">
+     <span *ngIf="pokemon.nationalPokedexNumber as pokedexNumber">
+       #{{ pokedexNumber }}
+     </span>
+    <span>
+      {{ pokemon.name }}
+    </span>
+    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name">
+  </div>
+</div>
+
+

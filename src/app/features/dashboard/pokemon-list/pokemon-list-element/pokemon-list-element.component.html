@@ -1,0 +1,13 @@
+<div class="pokemon-card">
+  <span *ngIf="pokemonCard.nationalPokedexNumber as pokedexNumber">
+    #{{ pokedexNumber }}
+  </span>
+  <span>
+    {{pokemonCard.name}}
+  </span>
+  <img
+    [src]="pokemonCard.imageUrl"
+    [alt]="pokemonCard.name"
+    [routerLink]="['/pokemon', pokemonCard.id]"
+  >
+</div>
