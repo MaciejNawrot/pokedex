@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../../core/services/pokemon.service';
 import { PokemonCard } from '../../../core/interfaces/pokemons.interfaces';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -14,6 +15,9 @@ export class PokemonListComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonService.getPokemonsList()
+      .pipe(
+        take(1)
+      )
       .subscribe(({cards}) => {
         this.pokemonCards = cards;
       });
