@@ -1,5 +1,5 @@
-<div class="pokemon-list-wrapper">
-  <ng-container *ngFor="let card of pokemonCards">
+<div class="pokemon-list-wrapper" *ngIf="pokemonCards$ | async as cards">
+  <ng-container *ngFor="let card of cards; trackBy: trackById">
       <app-pokemon-list-element [pokemonCard]="card"></app-pokemon-list-element>
   </ng-container>
 </div>

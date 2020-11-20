@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreRoutingModule } from './core-routing.module';
-import { PokemonService } from './services/pokemon.service';
 import { MenuComponent } from './components/menu/menu.component';
-
 
 @NgModule({
   declarations: [
-  MenuComponent],
+  MenuComponent
+  ],
   exports: [
     CoreRoutingModule,
     MenuComponent,
@@ -19,8 +18,5 @@ import { MenuComponent } from './components/menu/menu.component';
     CoreRoutingModule,
     HttpClientModule,
   ],
-  providers: [
-    PokemonService,
-  ]
 })
-export class CoreModule { }
+export class CoreModule {}

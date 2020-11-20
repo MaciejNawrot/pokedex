@@ -17,4 +17,4 @@ import { PokemonListElementComponent } from './pokemon-list/pokemon-list-element
     DashboardRoutingModule,
   ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

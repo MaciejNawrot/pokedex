@@ -6,7 +6,6 @@ export interface PokemonDetailResponse {
   card: PokemonCard;
 }
 
-
 export interface PokemonCard {
   id: string;
   name: string;

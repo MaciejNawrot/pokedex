@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
-import { PokemonService } from '../../core/services/pokemon.service';
+import { PokemonCardsHttpService } from '../../core/services/pokemon-cards.http.service';
 import { PokemonCard } from '../../core/interfaces/pokemons.interfaces';
 
 @Component({
@@ -16,8 +16,8 @@ export class PokemonDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private pokemonService: PokemonService,
-    ) { }
+    private pokemonService: PokemonCardsHttpService,
+    ) {}
 
   ngOnInit(): void {
     this.getPokemonFromRouteParams();
