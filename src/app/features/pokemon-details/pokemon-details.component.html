@@ -1,13 +1,34 @@
 <div class="details-container">
-  <div class="pokemon-details" *ngIf="(pokemon$ | async) as pokemon">
+  <div *ngIf="(pokemon$ | async) as pokemon"
+       [formGroup]="form"
+       class="pokemon-details">
      <span *ngIf="pokemon.nationalPokedexNumber as pokedexNumber">
        #{{ pokedexNumber }}
      </span>
     <span>
       {{ pokemon.name }}
     </span>
-    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name">
+    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name" (click)="q(pokemon)">
+
+
+    <input type="text" formControlName="rarity">
+    <input type="text" formControlName="set">
+
+    <button (click)="q(this.form.get('types'))">qwe</button>
+    <button (click)="q(typesControls)">qwe</button>
+
+<!--    <ng-container *ngIf="form.get('types') as formTypes">-->
+<!--      <div *ngFor="let item of formTypes.controls; let i = index">-->
+<!--        <select [formControlName]="i">-->
+<!--          <option></option>-->
+<!--          <option *ngFor="let type of pokemonTypes$ | async">{{type}}</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--    </ng-container>-->
+
+    <button [disabled]="form.invalid"> update pokemon card </button>
   </div>
+
 </div>
 
 

@@ -13,6 +13,8 @@ import { PokemonCard } from '../../../core/interfaces/pokemons.interfaces';
 })
 export class PokemonListComponent implements OnInit {
   public pokemonCards$: Observable<PokemonCard[]>;
+  public pokemonTypes$: Observable<string[]>;
+  public filteringType: string;
 
   constructor(private pokemonService: PokemonCardsHttpService) {}
 
@@ -20,6 +22,14 @@ export class PokemonListComponent implements OnInit {
     this.pokemonCards$ = this.pokemonService.getCards().pipe(
       map(({cards}) => cards),
     );
+    this.pokemonTypes$ = this.pokemonService.getPokemonTypes().pipe(
+      map(({types}) => types),
+    );
+  }
+
+  public changeFilteringType(type: string): void {
+    console.log(type)
+    this.filteringType = type;
   }
 
   public trackById(index, card: PokemonCard): string {
