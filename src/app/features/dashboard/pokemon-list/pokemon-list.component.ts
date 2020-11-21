@@ -28,7 +28,6 @@ export class PokemonListComponent implements OnInit {
   }
 
   public changeFilteringType(type: string): void {
-    console.log(type)
     this.filteringType = type;
   }
 
