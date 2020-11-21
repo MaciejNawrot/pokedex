@@ -31,10 +31,6 @@ export class PokemonDetailsComponent implements OnInit {
     );
   }
 
-  q(w: any) {
-    console.log(w);
-  }
-
   private getPokemonFromRouteParams(): void {
     this.pokemon$ = this.route.paramMap.pipe(
       switchMap(params => {
@@ -58,31 +54,32 @@ export class PokemonDetailsComponent implements OnInit {
     };
 
     if (types) {
+      types.push('Grass')
       const typesFormArray = this.formBuilder.array([]);
-      console.log(typesFormArray)
 
       types.forEach((type, i) => {
         const isMainType = i === 0;
-        const control = this.formBuilder.group({
+        const group = this.formBuilder.group({
           type,
           isMainType,
         });
 
         if (isMainType) {
-          control.setValidators([Validators.required]);
-          control.updateValueAndValidity();
+          const typeControl = group.get('type');
+
+          typeControl.setValidators([Validators.required]);
+          typeControl.updateValueAndValidity();
         }
 
-        typesFormArray.push(control);
+        typesFormArray.push(group);
       });
 
       formGroupConfig = {
-        types: this.formBuilder.array([typesFormArray]),
+        types: typesFormArray,
         ...formGroupConfig,
       };
     }
     this.form = this.formBuilder.group(formGroupConfig);
-    console.log(this.form.getRawValue());
   }
 
   get typesControls(): AbstractControl[] {

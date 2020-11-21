@@ -1,6 +1,18 @@
 @import "~src/scss/helpers";
+@import "~src/scss/forms";
 
 .pokemon-list-wrapper {
-  width: 100%;
   @include flex-column-centered;
+  width: 100%;
+
+  .navigation {
+    margin: 40px 0 10px 0;
+  }
+
+  .pokemon-cards {
+    @include flex-grid;
+    @include wrap-on-high-resolutions;
+
+    margin-top: 20px;
+  }
 }

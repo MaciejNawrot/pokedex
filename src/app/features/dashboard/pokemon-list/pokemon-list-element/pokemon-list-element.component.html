@@ -1,13 +1,20 @@
 <div class="pokemon-card">
-  <span *ngIf="pokemonCard.nationalPokedexNumber as pokedexNumber">
-    #{{ pokedexNumber }}
+  <span class="card-header">
+    <ng-container *ngIf="pokemonCard.nationalPokedexNumber as pokedexNumber; else utilityCard">
+      #{{ pokedexNumber }}
+    </ng-container>
+    <ng-template #utilityCard>
+      Utility Card
+    </ng-template>
   </span>
-  <span>
+
+  <span class="card-name">
     {{pokemonCard.name}}
   </span>
+
   <img
+    class="pokemon-card-image"
     [src]="pokemonCard.imageUrl"
     [alt]="pokemonCard.name"
-    [routerLink]="['/pokemon', pokemonCard.id]"
-  >
+    [routerLink]="['/pokemon', pokemonCard.id]">
 </div>

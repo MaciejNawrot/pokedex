@@ -1,5 +1,7 @@
+@import "~src/scss/helpers";
+
 nav {
-  width: 100%;
+  @include wrap-on-high-resolutions;
 }
 
 ol {
@@ -9,7 +11,9 @@ ol {
   padding-top: 30px;
 
   li {
-    padding-left: 18px;
+    padding-left: 64px;
+    font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
     text-decoration: underline;
 

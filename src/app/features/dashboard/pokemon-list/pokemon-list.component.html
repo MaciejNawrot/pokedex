@@ -1,10 +1,19 @@
 <div class="pokemon-list-wrapper" *ngIf="pokemonCards$ | async as cards">
-  <select (change)="changeFilteringType($event.target.value)">
-    <option></option>
-    <option *ngFor="let type of pokemonTypes$ | async">{{type}}</option>
-  </select>
-  <app-pokemon-list-element
-    *ngFor="let card of cards | filterPokemonCardsByType: filteringType; trackBy: trackById"
-    [pokemonCard]="card">
-  </app-pokemon-list-element>
+  <div class="navigation">
+    <select class="pokemon-select" (change)="changeFilteringType($event.target.value)">
+      <option></option>
+      <option
+        *ngFor="let type of pokemonTypes$ | async"
+        [appSetColorsForPokemonType]="type">
+        {{type}}
+      </option>
+    </select>
+  </div>
+  <div class="pokemon-cards">
+    <app-pokemon-list-element
+      *ngFor="let card of cards | filterPokemonCardsByType: filteringType; trackBy: trackById"
+      [pokemonCard]="card">
+    </app-pokemon-list-element>
+  </div>
 </div>
+

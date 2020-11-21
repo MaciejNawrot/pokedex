@@ -1,10 +1,27 @@
+@import "~src/scss/helpers";
+
 .pokemon-card {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  width: 246px;
+  @include flex-column;
+  margin-top: 32px;
+  width: 286px;
+  box-sizing: border-box;
+  padding: 0 20px 20px 20px;
+}
+
+.card-header {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.card-name {
+  font-size: 18px;
+}
+
+.pokemon-card-image {
+  margin-top: 16px;
 }
 
 img {
+  width: 246px;
   cursor: pointer;
 }

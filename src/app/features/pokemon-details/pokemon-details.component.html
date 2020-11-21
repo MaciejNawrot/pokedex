@@ -1,5 +1,5 @@
 <div class="details-container">
-  <div *ngIf="(pokemon$ | async) as pokemon"
+  <form *ngIf="(pokemon$ | async) as pokemon"
        [formGroup]="form"
        class="pokemon-details">
      <span *ngIf="pokemon.nationalPokedexNumber as pokedexNumber">
@@ -8,26 +8,36 @@
     <span>
       {{ pokemon.name }}
     </span>
-    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name" (click)="q(pokemon)">
+    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name">
 
+    <div class="pokemon-form-element">
+      <label>Rarity</label>
+      <input type="text" formControlName="rarity" class="pokemon-input">
+    </div>
 
-    <input type="text" formControlName="rarity">
-    <input type="text" formControlName="set">
+    <div class="pokemon-form-element">
+      <label>Set name</label>
+      <input type="text" formControlName="set" class="pokemon-input">
+    </div>
 
-    <button (click)="q(this.form.get('types'))">qwe</button>
-    <button (click)="q(typesControls)">qwe</button>
+    <div formArrayName="types" *ngIf="form.get('types') as formTypes">
+      <div *ngFor="let item of formTypes.controls; let i = index" [formGroup]="item">
+        <div class="pokemon-form-element">
+          <label> {{ item.get('isMainType').value ? 'Main type' : 'Secondary type' }} </label>
+          <select formControlName="type" class="pokemon-select">
+            <option></option>
+            <option *ngFor="let type of pokemonTypes$ | async"
+                    [appSetColorsForPokemonType]="type"
+                    [selected]="item.get('type').value === type">
+              {{type}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
 
-<!--    <ng-container *ngIf="form.get('types') as formTypes">-->
-<!--      <div *ngFor="let item of formTypes.controls; let i = index">-->
-<!--        <select [formControlName]="i">-->
-<!--          <option></option>-->
-<!--          <option *ngFor="let type of pokemonTypes$ | async">{{type}}</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </ng-container>-->
-
-    <button [disabled]="form.invalid"> update pokemon card </button>
-  </div>
+    <button class="pokemon-btn" [disabled]="form.invalid"> Update Card </button>
+  </form>
 
 </div>
 

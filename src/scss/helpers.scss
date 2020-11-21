@@ -9,3 +9,15 @@
   @include flex-column;
   align-items: center;
 }
+
+@mixin wrap-on-high-resolutions {
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+@mixin flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

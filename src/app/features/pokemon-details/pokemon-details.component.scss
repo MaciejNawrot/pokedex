@@ -1,4 +1,5 @@
 @import "~src/scss/helpers";
+@import "~src/scss/forms";
 
 :host {
   width: 100%;
@@ -11,4 +12,8 @@
 
 .pokemon-details {
   @include flex-column-centered;
+}
+
+.pokemon-btn {
+  margin: 40px 0 40px 0;
 }

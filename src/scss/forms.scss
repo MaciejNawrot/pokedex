@@ -1,0 +1,40 @@
+@import "./helpers";
+
+.pokemon-form-element {
+  @include flex-column;
+
+  label {
+    font-size: 21px;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 10px 16px 4px 16px;
+  }
+}
+
+.pokemon-select,
+.pokemon-input,
+.pokemon-btn {
+  height: 40px;
+  width: 320px;
+  outline: none;
+  padding: 0 16px;
+  font-family: 'Muli';
+  font-size: 19px;
+  box-sizing: border-box;
+}
+
+.pokemon-select {
+  cursor: pointer;
+}
+
+.pokemon-input {
+  cursor: text;
+}
+
+.pokemon-btn {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
