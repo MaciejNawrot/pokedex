@@ -1,14 +1,18 @@
 <div class="details-container">
   <form *ngIf="(pokemon$ | async) as pokemon"
-       [formGroup]="form"
-       class="pokemon-details">
-     <span *ngIf="pokemon.nationalPokedexNumber as pokedexNumber">
-       #{{ pokedexNumber }}
-     </span>
-    <span>
-      {{ pokemon.name }}
+        [formGroup]="form"
+        class="pokemon-details">
+    <span class="card-header">
+      <ng-container *ngIf="pokemon.nationalPokedexNumber as pokedexNumber; else utilityCard">
+        #{{ pokedexNumber }}
+      </ng-container>
+      <ng-template #utilityCard>
+        Utility Card
+      </ng-template>
+      <span>
+        {{ pokemon.name }}
+      </span>
     </span>
-    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name">
 
     <div class="pokemon-form-element">
       <label>Rarity</label>
@@ -20,7 +24,9 @@
       <input type="text" formControlName="set" class="pokemon-input">
     </div>
 
-    <div formArrayName="types" *ngIf="form.get('types') as formTypes">
+    <div *ngIf="form.get('types') as formTypes"
+         formArrayName="types"
+         class="types-controls">
       <div *ngFor="let item of formTypes.controls; let i = index" [formGroup]="item">
         <div class="pokemon-form-element">
           <label> {{ item.get('isMainType').value ? 'Main type' : 'Secondary type' }} </label>
@@ -36,7 +42,11 @@
       </div>
     </div>
 
-    <button class="pokemon-btn" [disabled]="form.invalid"> Update Card </button>
+    <button class="pokemon-btn" [disabled]="form.invalid"> Update Card</button>
+
+    <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name">
+
+
   </form>
 
 </div>

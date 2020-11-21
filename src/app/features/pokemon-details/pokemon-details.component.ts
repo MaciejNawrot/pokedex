@@ -2,11 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 import { PokemonCardsHttpService } from '../../core/services/pokemon-cards.http.service';
 import { PokemonCard } from '../../core/interfaces/pokemons.interfaces';
+
+interface FromConfig {
+  set: any;
+  rarity: any;
+  types?: FormArray;
+}
 
 @Component({
   selector: 'app-pokemon-details',
@@ -48,13 +54,12 @@ export class PokemonDetailsComponent implements OnInit {
   private createForm(card: PokemonCard): void {
     const {rarity, set, types} = card;
 
-    let formGroupConfig: any = {
-      rarity: [rarity, [Validators.required, Validators.maxLength(12)]],
+    let formGroupConfig: FromConfig = {
+      rarity: [rarity, [Validators.required, Validators.maxLength(30)]],
       set: [set, [Validators.required, Validators.maxLength(40)]],
     };
 
     if (types) {
-      types.push('Grass')
       const typesFormArray = this.formBuilder.array([]);
 
       types.forEach((type, i) => {
@@ -80,9 +85,5 @@ export class PokemonDetailsComponent implements OnInit {
       };
     }
     this.form = this.formBuilder.group(formGroupConfig);
-  }
-
-  get typesControls(): AbstractControl[] {
-    return (this.form.get('types') as FormArray).controls;
   }
 }
