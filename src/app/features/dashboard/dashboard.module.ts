@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonListElementComponent } from './pokemon-list/pokemon-list-element/pokemon-list-element.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
-import {DirectivesModule} from '../../shared/directives/directives.module';
+import { DirectivesModule } from '../../shared/directives/directives.module';
 
 @NgModule({
   declarations: [
