@@ -57,8 +57,8 @@ export class PokemonDetailsComponent implements OnInit {
     });
 
     this.form = this.fb.group({
-      rarity: [rarity, [Validators.required, Validators.maxLength(30)]],
-      set: [set, [Validators.required, Validators.maxLength(40)]],
+      rarity: [rarity, [Validators.required, Validators.maxLength(20)]],
+      set: [set, [Validators.required, Validators.maxLength(30)]],
       types: this.fb.array(typesFormArrayItems),
     });
   }
@@ -69,5 +69,13 @@ export class PokemonDetailsComponent implements OnInit {
 
   public get formTypesControls(): AbstractControl[] {
     return this.formTypes.controls;
+  }
+
+  public get rarityControl(): AbstractControl {
+    return this.form.get('rarity');
+  }
+
+  public get setNameControl(): AbstractControl {
+    return this.form.get('set');
   }
 }

@@ -3,11 +3,18 @@
 .pokemon-form-element {
   @include flex-column;
 
-  label {
+  label{
     font-size: 21px;
     color: #ffffff;
     box-sizing: border-box;
     padding: 10px 16px 4px 16px;
+  }
+
+  .error {
+    font-size: 21px;
+    color: #ff5568;
+    box-sizing: border-box;
+    padding: 4px 0 12px 0;
   }
 }
 

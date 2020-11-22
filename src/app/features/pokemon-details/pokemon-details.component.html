@@ -15,13 +15,21 @@
     </span>
 
     <div class="pokemon-form-element full-width">
-      <label>Rarity</label>
+      <label> Rarity </label>
       <input type="text" formControlName="rarity" class="pokemon-input">
+      <ng-container *ngIf="rarityControl.invalid">
+        <span class="error" *ngIf="rarityControl.hasError('required')"> This field is required </span>
+        <span class="error" *ngIf="rarityControl.hasError('maxlength')"> Limit: 20 chars </span>
+      </ng-container>
     </div>
 
     <div class="pokemon-form-element full-width">
-      <label>Set name</label>
+      <label> Set name </label>
       <input type="text" formControlName="set" class="pokemon-input">
+      <ng-container *ngIf="setNameControl.invalid">
+        <span class="error" *ngIf="setNameControl.hasError('required')"> This field is required </span>
+        <span class="error" *ngIf="setNameControl.hasError('maxlength')"> Limit: 30 chars </span>
+      </ng-container>
     </div>
 
     <div *ngIf="formTypes"
@@ -38,6 +46,9 @@
               {{type}}
             </option>
           </select>
+          <ng-container *ngIf="item.invalid">
+            <span class="error"> This field is required </span>
+          </ng-container>
         </div>
       </div>
     </div>
