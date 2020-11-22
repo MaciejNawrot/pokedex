@@ -1,12 +1,17 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "paths": {
-      "@app/*": ["app/*"],
-      "@env/*": ["environments/*"],
-      "@interfaces/*": ["app/core/@interfaces/*"],
-      "@interfaces": ["app/core/@interfaces"]
+      "@env/*": [
+        "environments/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@interfaces": [
+        "app/core/interfaces"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

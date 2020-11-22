@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 import { PokemonCardsHttpService } from '../../core/services/pokemon-cards.http.service';
-import { PokemonCard } from '../../core/interfaces/pokemons.interfaces';
+import { PokemonCard } from '../../core/interfaces';
 
 @Component({
   selector: 'app-pokemon-details',
