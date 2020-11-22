@@ -8,12 +8,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PokemonCardsHttpService } from '../../core/services/pokemon-cards.http.service';
 import { PokemonCard } from '../../core/interfaces/pokemons.interfaces';
 
-interface FromConfig {
-  set: any;
-  rarity: any;
-  types?: FormArray;
-}
-
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
