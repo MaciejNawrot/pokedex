@@ -4,7 +4,6 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
 import { PokemonCardsHttpService } from '../../core/services/pokemon-cards.http.service';
 import { PokemonCard } from '../../core/interfaces';
 

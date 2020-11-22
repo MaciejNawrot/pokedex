@@ -21,6 +21,10 @@
   font-family: 'Muli';
   font-size: 19px;
   box-sizing: border-box;
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 }
 
 .pokemon-select {

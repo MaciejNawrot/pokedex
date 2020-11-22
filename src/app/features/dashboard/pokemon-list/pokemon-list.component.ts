@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { PokemonCardsHttpService } from '../../../core/services/pokemon-cards.http.service';
-import { PokemonCard } from '../../../core/interfaces/pokemons.interfaces';
+import { PokemonCard } from '../../../core/interfaces';
 
 @Component({
   selector: 'app-pokemon-list',

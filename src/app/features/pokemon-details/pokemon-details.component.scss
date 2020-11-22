@@ -13,10 +13,25 @@
   margin: 0 auto 40px auto;
 }
 
+form {
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
 .pokemon-details {
   @include flex-column-centered;
 }
 
 .pokemon-btn {
   margin: 40px auto 40px 0;
+}
+
+img {
+  width: 100%;
+  margin-right: auto;
+  height: auto;
+
+  @media (min-width: 720px) {
+    width: 600px;
+  }
 }
