@@ -27,7 +27,7 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private pokemonService: PokemonCardsHttpService,
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     ) {}
 
   ngOnInit(): void {
@@ -52,38 +52,21 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   private createForm(card: PokemonCard): void {
-    const {rarity, set, types} = card;
+    const { rarity, set, types } = card;
 
-    let formGroupConfig: FromConfig = {
+    const typesFormArrayItems: FormGroup[] = (types || []).map((type: string, idx: number) => {
+      const isMainType: boolean = idx === 0;
+
+      return this.fb.group({
+        type: [type, isMainType ? [Validators.required] : []],
+        isMainType: [isMainType],
+      });
+    });
+
+    this.form = this.fb.group({
       rarity: [rarity, [Validators.required, Validators.maxLength(30)]],
       set: [set, [Validators.required, Validators.maxLength(40)]],
-    };
-
-    if (types) {
-      const typesFormArray = this.formBuilder.array([]);
-
-      types.forEach((type, i) => {
-        const isMainType = i === 0;
-        const group = this.formBuilder.group({
-          type,
-          isMainType,
-        });
-
-        if (isMainType) {
-          const typeControl = group.get('type');
-
-          typeControl.setValidators([Validators.required]);
-          typeControl.updateValueAndValidity();
-        }
-
-        typesFormArray.push(group);
-      });
-
-      formGroupConfig = {
-        types: typesFormArray,
-        ...formGroupConfig,
-      };
-    }
-    this.form = this.formBuilder.group(formGroupConfig);
+      types: this.fb.array(typesFormArrayItems),
+    });
   }
 }
