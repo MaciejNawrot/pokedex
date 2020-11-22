@@ -31,7 +31,7 @@ export class PokemonListComponent implements OnInit {
     this.filteringType = type;
   }
 
-  public trackById(index, card: PokemonCard): string {
+  public trackById(index: number, card: PokemonCard): string {
     return card.id;
   }
 }

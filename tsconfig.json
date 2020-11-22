@@ -3,15 +3,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@env/*": [
-        "environments/*"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@interfaces": [
-        "app/core/interfaces"
-      ]
+      "@core/*": ["app/core/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -31,7 +23,6 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   },
-  "files": [],
   "references": [
     {
       "path": "./tsconfig.app.json"

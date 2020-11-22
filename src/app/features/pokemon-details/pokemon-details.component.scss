@@ -4,12 +4,10 @@
 .card-header {
   font-size: 32px;
   font-weight: 600;
-  width: 100%;
   margin-bottom: 30px;
 }
 
 .details-container {
-  width: 100%;
   max-width: 600px;
   padding-top: 30px;
   margin: 0 auto 40px auto;
@@ -17,11 +15,6 @@
 
 .pokemon-details {
   @include flex-column-centered;
-}
-
-.pokemon-form-element,
-.types-controls {
-  width: 100%;
 }
 
 .pokemon-btn {

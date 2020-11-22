@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 import { PokemonCardsHttpService } from '../../core/services/pokemon-cards.http.service';
@@ -62,5 +62,13 @@ export class PokemonDetailsComponent implements OnInit {
       set: [set, [Validators.required, Validators.maxLength(40)]],
       types: this.fb.array(typesFormArrayItems),
     });
+  }
+
+  public get formTypes(): FormArray {
+    return (this.form.get('types') as FormArray);
+  }
+
+  public get formTypesControls(): AbstractControl[] {
+    return this.formTypes.controls;
   }
 }
