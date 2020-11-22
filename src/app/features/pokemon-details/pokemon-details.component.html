@@ -32,29 +32,30 @@
       </ng-container>
     </div>
 
-    <div *ngIf="formTypes"
-         formArrayName="types"
-         class="types-controls full-width">
-      <div *ngFor="let item of formTypesControls; let i = index" [formGroup]="item">
-        <div class="pokemon-form-element">
-          <label> {{ item.get('isMainType').value ? 'Main type' : 'Secondary type' }} </label>
-          <select formControlName="type" class="pokemon-select">
-            <option></option>
-            <option *ngFor="let type of pokemonTypes$ | async"
-                    [appSetColorsForPokemonType]="type"
-                    [selected]="item.get('type').value === type">
-              {{type}}
-            </option>
-          </select>
-          <ng-container *ngIf="item.invalid">
-            <span class="error"> This field is required </span>
-          </ng-container>
+    <ng-container *ngIf="pokemonTypes$ | async as pokemonTypes">
+      <div *ngIf="formTypes"
+           formArrayName="types"
+           class="types-controls full-width">
+        <div *ngFor="let item of formTypesControls" [formGroup]="item">
+          <div class="pokemon-form-element">
+            <label> {{ item.get('isMainType').value ? 'Main type' : 'Secondary type' }} </label>
+            <select formControlName="type" class="pokemon-select">
+              <option></option>
+              <option *ngFor="let type of pokemonTypes"
+                      [appSetColorsForPokemonType]="type"
+                      [selected]="item.get('type').value === type">
+                {{type}}
+              </option>
+            </select>
+            <ng-container *ngIf="item.invalid">
+              <span class="error"> This field is required </span>
+            </ng-container>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
 
-    <button class="pokemon-btn" [disabled]="form.invalid"> Update Card</button>
-
+    <button class="pokemon-btn" [disabled]="form.invalid"> Update Card </button>
     <img [src]="pokemon.imageUrlHiRes" [alt]="pokemon.name">
   </form>
 </div>
