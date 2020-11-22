@@ -17,6 +17,10 @@ ol {
     cursor: pointer;
     text-decoration: underline;
 
+    @media (max-width: 700px) {
+      padding-left: 15px;
+    }
+
     &:focus {
       outline: none;
     }

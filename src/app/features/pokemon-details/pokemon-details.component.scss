@@ -22,6 +22,10 @@ form {
   @include flex-column-centered;
 }
 
+.types-controls {
+  margin-right: auto;
+}
+
 .pokemon-btn {
   margin: 40px auto 40px 0;
 }

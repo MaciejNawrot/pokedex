@@ -26,7 +26,7 @@
 
     <div *ngIf="formTypes"
          formArrayName="types"
-         class="types-controls">
+         class="types-controls full-width">
       <div *ngFor="let item of formTypesControls; let i = index" [formGroup]="item">
         <div class="pokemon-form-element">
           <label> {{ item.get('isMainType').value ? 'Main type' : 'Secondary type' }} </label>
