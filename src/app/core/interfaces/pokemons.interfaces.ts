@@ -20,3 +20,7 @@ export interface PokemonCard {
   set: string;
   rarity: string;
 }
+
+export interface PokemonDetailsConfig {
+  id: string;
+}
