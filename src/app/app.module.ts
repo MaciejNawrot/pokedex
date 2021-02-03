@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,7 +15,6 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    StoreModule.forRoot({}),
   ],
   bootstrap: [AppComponent]
 })

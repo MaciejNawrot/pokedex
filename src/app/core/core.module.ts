@@ -4,10 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { RootStoreModule } from '../state/root-store.module';
 
 @NgModule({
   declarations: [
-  MenuComponent
+    MenuComponent
   ],
   exports: [
     CoreRoutingModule,
@@ -17,6 +18,7 @@ import { MenuComponent } from './components/menu/menu.component';
     CommonModule,
     CoreRoutingModule,
     HttpClientModule,
+    RootStoreModule,
   ],
 })
 export class CoreModule {}
