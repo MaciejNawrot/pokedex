@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {PokemonDetailResponse, PokemonListResponse, PokemonTypesResponse} from '../interfaces/pokemons.interfaces';
 import { environment } from '../../../environments/environment';
 
@@ -10,6 +10,8 @@ import { environment } from '../../../environments/environment';
 
 export class PokemonCardsHttpService {
   private apiUrl: string = environment.api;
+  public countSubject: BehaviorSubject<number> = new BehaviorSubject(0);
+  public readonly countObservable: Observable<number> = this.countSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +25,9 @@ export class PokemonCardsHttpService {
 
   public getPokemonTypes(): Observable<PokemonTypesResponse> {
     return this.http.get<PokemonTypesResponse>(`${this.apiUrl}/types`);
+  }
+
+  public incrementCounter(): void {
+    this.countSubject.next(this.countSubject.value + 1);
   }
 }

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { pokemonsFeatureKey, reducer } from './pokemons.reducer';
+import { pokemonsFeatureKey, fromPokemonsReducer } from './pokemons.reducer';
 
 
 @NgModule({
   imports: [
-    StoreModule.forFeature( pokemonsFeatureKey, reducer)
+    StoreModule.forFeature( pokemonsFeatureKey, fromPokemonsReducer )
   ]
 })
 export class PokemonsStoreModule {}

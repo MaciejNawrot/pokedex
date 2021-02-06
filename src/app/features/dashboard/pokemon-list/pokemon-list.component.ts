@@ -5,8 +5,8 @@ import { pluck } from 'rxjs/operators';
 
 import { PokemonCardsHttpService } from '../../../core/services/pokemon-cards.http.service';
 import { PokemonCard } from '../../../core/interfaces';
-import { State } from '../../../state/pokemons-store/pokemons.reducer';
 import { GetPokemonsList } from '../../../state/pokemons-store/pokemons.actions';
+import {AppState, IAppState} from '../../../state/root-store.state';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -19,11 +19,9 @@ export class PokemonListComponent implements OnInit {
   public pokemonTypes$: Observable<string[]>;
   public filteringType: string;
 
-  constructor(private pokemonService: PokemonCardsHttpService, private store: Store<State>) {}
+  constructor(public pokemonService: PokemonCardsHttpService, private store: Store<IAppState>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(GetPokemonsList());
-
     this.pokemonCards$ = this.pokemonService.getCards().pipe(
       pluck('cards'),
     );
@@ -34,6 +32,10 @@ export class PokemonListComponent implements OnInit {
 
   public changeFilteringType(type: string): void {
     this.filteringType = type;
+  }
+
+  public incrementCounter(): void {
+    this.pokemonService.incrementCounter();
   }
 
   public trackById(index: number, card: PokemonCard): string {

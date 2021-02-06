@@ -1,3 +1,8 @@
+
+<button (click)="incrementCounter()">couter ++</button>
+<div class="counter"> {{ pokemonService.countObservable | async }} </div>
+<div class="counter"> {{ pokemonService.countSubject | async }} </div>
+
 <div class="pokemon-list-wrapper full-width" *ngIf="pokemonCards$ | async as cards">
   <div class="navigation">
     <div class="pokemon-form-element">

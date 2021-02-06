@@ -1,5 +1,9 @@
 <nav>
-  <ol>
+  <ul>
     <li routerLink="/"> To dashboard </li>
-  </ol>
+    <li> Couter: {{ pokemonService.countSubject | async }}</li>
+    <li>
+      <button class="pokemon-btn pokemon-btn--small" (click)="increaseCounter()"> couter++ </button>
+    </li>
+  </ul>
 </nav>
