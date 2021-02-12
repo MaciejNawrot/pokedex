@@ -5,8 +5,7 @@ import { pluck } from 'rxjs/operators';
 
 import { PokemonCardsHttpService } from '../../../core/services/pokemon-cards.http.service';
 import { PokemonCard } from '../../../core/interfaces';
-import { GetPokemonsList } from '../../../state/pokemons-store/pokemons.actions';
-import {AppState, IAppState} from '../../../state/root-store.state';
+import { IAppState } from '../../../state/root-store.state';
 
 @Component({
   selector: 'app-pokemon-list',

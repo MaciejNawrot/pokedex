@@ -1,5 +1,5 @@
 <div class="details-container full-width">
-  <form *ngIf="(pokemon$ | async) as pokemon"
+  <form *ngIf="pokemon"
         [formGroup]="form"
         class="pokemon-details">
     <span class="card-header full-width">
@@ -13,6 +13,16 @@
         {{ pokemon.name }}
       </span>
     </span>
+
+    <div class="pokemon-form-element full-width">
+      <label> Name </label>
+      <input type="text" formControlName="name" class="pokemon-input">
+      <ng-container *ngIf="rarityControl.invalid">
+        <span class="error" *ngIf="rarityControl.hasError('required')"> This field is required </span>
+        <span class="error" *ngIf="rarityControl.hasError('maxlength')"> Limit: 20 chars </span>
+      </ng-container>
+    </div>
+
 
     <div class="pokemon-form-element full-width">
       <label> Rarity </label>
